@@ -6,7 +6,7 @@
 
 ``cp .env.example .env``
 
-``./vendor/bin/sail up``
+``./vendor/bin/sail up -d``
 
 ``./vendor/bin/sail php artisan migrate:fresh --seed``
 
