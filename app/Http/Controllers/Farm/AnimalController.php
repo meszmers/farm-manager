@@ -62,8 +62,8 @@ class AnimalController extends Controller
 
         $this->farmAnimalService->transferAnimalToAnotherFarm(
             $request->user(),
-            (int) $request->get('transfer_farm_id'),
             $animalId,
+            (int) $request->get('transfer_farm_id'),
         );
 
         return response()->json(['success' => true]);

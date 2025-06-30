@@ -23,17 +23,16 @@ class FarmAnimalService
     public function transferAnimalToAnotherFarm(User $user, int $animalId, int $farmId): void
     {
         $animal = $this->animalRepository->getUserAnimal($user, $animalId);
-        $farm =  $this->userFarmRepository->getUserFarm($user, $farmId);
-
         if (!$animal) {
-            throw new Exception("Animal not found for this user.");
+            throw new Exception('Animal not found for this user.');
         }
 
+        $farm = $this->userFarmRepository->getUserFarm($user, $farmId);
         if (!$farm) {
-            throw new Exception("Farm not found for this user.");
+            throw new Exception('Farm not found for this user.');
         }
 
-        if ($farm->animals()->count() >= AnimalService::MAX_ANIMAL_COUNT_PER_FARM) {
+        if (count($farm->animals) >= AnimalService::MAX_ANIMAL_COUNT_PER_FARM) {
             throw new Exception("Farm animals limit reached.");
         }
 

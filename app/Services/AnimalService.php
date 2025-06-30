@@ -60,6 +60,6 @@ class AnimalService
 
     private function canAnimalBeAddedToTheFarm(Farm $farm): bool
     {
-        return $farm->animals()->count() < self::MAX_ANIMAL_COUNT_PER_FARM;
+        return count($farm->animals) < self::MAX_ANIMAL_COUNT_PER_FARM;
     }
 }

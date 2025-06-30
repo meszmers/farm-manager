@@ -28,7 +28,7 @@ class UserFarmService
 
         return array_filter(
             $farms,
-            static fn (Farm $farm) => $farm->animals()->count() < AnimalService::MAX_ANIMAL_COUNT_PER_FARM,
+            static fn (Farm $farm) => count($farm->animals) < AnimalService::MAX_ANIMAL_COUNT_PER_FARM,
         );
     }
 

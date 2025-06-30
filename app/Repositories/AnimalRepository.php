@@ -13,7 +13,10 @@ class AnimalRepository
 {
     public function getUserAnimal(User $user, int $id): ?Animal
     {
-        return Animal::query()->where('user_id', $user->id)->find($id);
+        return Animal::query()->where([
+            ['id', '=', $id],
+            ['user_id', '=', $user->id],
+        ])->first();
     }
 
     public function createUserAnimal(User $user, AnimalStructure $structure)
